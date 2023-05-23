@@ -3,18 +3,31 @@ import { Button } from '../Button/Button';
 import { useForm } from 'react-hook-form';
 import styles from './form.module.scss';
 import { Checkbox } from '../Checkbox/Checkbox';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+
+const schema = z.object({
+  username: z.string().min(5, 'Username must be at least 5 characters long!'),
+  password: z
+    .string()
+    .min(4, 'Password must be at least 6 charachers long!')
+    .max(12, 'Password is too long!'),
+  inputLabel: z.string().optional(),
+  remember: z.boolean(),
+});
 
 export const Form = (props: any) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     mode: 'onChange',
+    resolver: zodResolver(schema),
   });
 
   const onSubmit = (data: any) => {
-    alert(data);
+    alert(JSON.stringify(data));
   };
 
   return (
@@ -23,19 +36,27 @@ export const Form = (props: any) => {
         <TextField
           label='Username'
           placeholder='Enter username'
-          {...register('username')}></TextField>
+          name='username'
+          register={register}
+          errors={errors}></TextField>
         <TextField
           label='Password'
           placeholder='Enter password'
-          {...register('password')}></TextField>
+          name='password'
+          register={register}
+          errors={errors}></TextField>
         <TextField
           label='Input label'
           placeholder='Enter something'
-          {...register('inputRandom')}></TextField>
-        <Checkbox></Checkbox>
+          name='inputLabel'
+          register={register}
+          errors={errors}></TextField>
+        <Checkbox label='Remember me' name='remember' register={register} />
         <div className={styles.controls}>
-          <Button type='bordered'>Cancel</Button>
-          <Button type='filled'>Next</Button>
+          <Button styleType='bordered'>Cancel</Button>
+          <Button styleType='filled' type='submit' disabled={!isValid}>
+            Next
+          </Button>
         </div>
       </div>
     </form>
