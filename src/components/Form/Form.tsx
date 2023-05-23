@@ -18,6 +18,7 @@ const schema = z.object({
 
 export const Form = (props: any) => {
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors, isValid },
@@ -53,7 +54,9 @@ export const Form = (props: any) => {
           errors={errors}></TextField>
         <Checkbox label='Remember me' name='remember' register={register} />
         <div className={styles.controls}>
-          <Button styleType='bordered'>Cancel</Button>
+          <Button styleType='bordered' onClick={() => reset()}>
+            Cancel
+          </Button>
           <Button styleType='filled' type='submit' disabled={!isValid}>
             Next
           </Button>
