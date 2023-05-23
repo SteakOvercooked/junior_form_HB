@@ -1,5 +1,6 @@
 import { TextField } from '../TextField';
 import { Button } from '../Button/Button';
+import { Toggle } from '../Slider/Toggle';
 import { useForm } from 'react-hook-form';
 import styles from './form.module.scss';
 import { Checkbox } from '../Checkbox/Checkbox';
@@ -10,10 +11,11 @@ const schema = z.object({
   username: z.string().min(5, 'Username must be at least 5 characters long!'),
   password: z
     .string()
-    .min(4, 'Password must be at least 6 charachers long!')
+    .min(4, 'Password must be at least 4 charachers long!')
     .max(12, 'Password is too long!'),
   inputLabel: z.string().optional(),
   remember: z.boolean(),
+  switch: z.boolean(),
 });
 
 export const Form = (props: any) => {
@@ -53,6 +55,7 @@ export const Form = (props: any) => {
           register={register}
           errors={errors}></TextField>
         <Checkbox label='Remember me' name='remember' register={register} />
+        <Toggle name='switch' register={register} />
         <div className={styles.controls}>
           <Button styleType='bordered' onClick={() => reset()}>
             Cancel

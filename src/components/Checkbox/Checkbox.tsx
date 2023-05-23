@@ -1,5 +1,5 @@
 import styles from './checkbox.module.scss';
-import type { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import type { FieldValues, UseFormRegister } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
