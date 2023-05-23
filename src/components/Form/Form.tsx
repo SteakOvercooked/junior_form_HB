@@ -1,4 +1,5 @@
 import { TextField } from '../TextField';
+import { Button } from '../Button/Button';
 import { useForm } from 'react-hook-form';
 import styles from './form.module.scss';
 import { Checkbox } from '../Checkbox/Checkbox';
@@ -32,6 +33,10 @@ export const Form = (props: any) => {
           placeholder='Enter something'
           {...register('inputRandom')}></TextField>
         <Checkbox></Checkbox>
+        <div className={styles.controls}>
+          <Button type='bordered'>Cancel</Button>
+          <Button type='filled'>Next</Button>
+        </div>
       </div>
     </form>
   );

@@ -1,0 +1,19 @@
+.button {
+  width: 172px;
+  height: 56px;
+  border: 1px solid #7A5CFA;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.bordered {
+  @extend .button;
+  color: #7A5CFA;
+  background-color: #fff;
+}
+
+.filled {
+  @extend .button;
+  color: #fff;
+  background-color: #7A5CFA;
+}
