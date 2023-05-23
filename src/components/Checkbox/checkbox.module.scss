@@ -19,8 +19,8 @@
   top: 6px;
 }
 
-.checkbox:checked {
-  transform: scaleX(110%);
+.checkbox:checked ~.icon{
+  opacity: 1;
 }
 
 .wrapper {

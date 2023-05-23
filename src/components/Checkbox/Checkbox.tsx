@@ -6,8 +6,8 @@ export const Checkbox = () => {
   return (
     <label className={styles.label}>
       <div className={styles.wrapper}>
-        <FontAwesomeIcon icon={faCheck} className={styles.icon}></FontAwesomeIcon>
         <input className={styles.checkbox} type='checkbox'></input>
+        <FontAwesomeIcon icon={faCheck} className={styles.icon}></FontAwesomeIcon>
       </div>
       Remember me
     </label>
