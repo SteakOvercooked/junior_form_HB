@@ -25,7 +25,7 @@ export const TextField = (props: InputProps) => {
           className={styles.textfield + invalid}></input>
         <FontAwesomeIcon icon={faCircleExclamation} className={styles.errorIcon} />
       </div>
-      <span className={styles.error}>{inputErrors?.message as string}</span>
+      {inputErrors && <span className={styles.error}>{inputErrors.message as string}</span>}
     </div>
   );
 };

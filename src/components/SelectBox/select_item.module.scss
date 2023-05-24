@@ -1,0 +1,32 @@
+.item {
+  cursor: pointer;
+  padding: 16px;
+  background-color: var(--main-bright);
+  border: 1px solid var(--secondary-bright);
+}
+
+.native {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.label {
+  font-size: 1.2em;
+  color: var(--main-dark)
+}
+
+.listItem {
+  &:last-child {
+    .item {
+      border-radius: 0 0 8px 8px;
+    }
+    margin-bottom: 30px;
+  }
+}
+
+.item:focus {
+  background-color: var(--main-violet);
+  .label {
+    color: var(--main-bright);
+  }
+}

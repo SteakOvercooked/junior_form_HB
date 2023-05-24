@@ -13,9 +13,9 @@
   content: "";
   width: 49px;
   height: 24px;
-  background-color: #fff;
+  background-color: var(--main-bright);
   border-radius: 32px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--secondary-bright);
   left: 0;
   top: 0;
   transform: translateY(-50%);
@@ -31,13 +31,13 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 1px solid #ccc;
-  background-color: #f4f4f4;
+  border: 1px solid var(--secondary-bright);
+  background-color: var(--toggle-off);
   transition: left .2s;
 }
 
 .toggle:checked:before {
-  background-color: #7A5CFA;
+  background-color: var(--main-violet);
 }
 
 .toggle:checked:after {
@@ -48,6 +48,6 @@
   margin-top: 16px;
   display: flex;
   align-items: center;
-  color: #666;
+  color: var(--main-dark);
 }
 

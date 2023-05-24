@@ -1,10 +1,10 @@
 .label {
   display: flex;
-  margin-top: 16px;
+  margin-top: 32px;
   cursor: pointer;
   align-items: center;
   user-select: none;
-  color: #666;
+  color: var(--main-dark);
 }
 
 .radioButton {
@@ -14,8 +14,8 @@
   cursor: pointer;
   height: 24px;
   width: 24px;
-  border: 1px solid #ccc;
-  background-color: #fff;
+  border: 1px solid var(--secondary-bright);
+  background-color: var(--main-bright);
   border-radius: 50%;
 }
 
@@ -24,7 +24,7 @@
   position: absolute;
   opacity: 0;
   border-radius: 50%;
-  background-color: #7A5CFA;
+  background-color: var(--main-violet);
   height: 12px;
   width: 12px;
   left: 5px;

@@ -2,6 +2,7 @@ import { TextField } from '../TextField';
 import { Checkbox } from '../Checkbox';
 import { Toggle } from '../Toggle';
 import { RadioButton, RadioGroup } from '../RadioGroup';
+import { SelectBox } from '../SelectBox';
 import { Button } from '../Button';
 import { useForm } from 'react-hook-form';
 import styles from './form.module.scss';
@@ -24,6 +25,12 @@ const radioButtons = [
   { id: 'choice1', value: 'choice1', name: 'someChoice', text: 'Radio selection 1' },
   { id: 'choice2', value: 'choice2', name: 'someChoice', text: 'Radio selection 2' },
   { id: 'choice3', value: 'choice3', name: 'someChoice', text: 'Radio selection 3' },
+];
+
+const selectOptions = [
+  { id: 'selectOption1', value: 'selectOption1', text: 'Dropdown option' },
+  { id: 'selectOption2', value: 'selectOption2', text: 'Dropdown option1' },
+  { id: 'selectOption3', value: 'selectOption3', text: 'Dropdown option2' },
 ];
 
 export const Form = (props: any) => {
@@ -71,6 +78,7 @@ export const Form = (props: any) => {
             </RadioButton>
           ))}
         </RadioGroup>
+        <SelectBox name='selectSomething' register={register} options={selectOptions} />
         <div className={styles.controls}>
           <Button styleType='bordered' onClick={() => reset()}>
             Cancel
