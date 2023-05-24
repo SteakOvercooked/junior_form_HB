@@ -1,9 +1,10 @@
 import { TextField } from '../TextField';
-import { Button } from '../Button/Button';
-import { Toggle } from '../Slider/Toggle';
+import { Checkbox } from '../Checkbox';
+import { Toggle } from '../Toggle';
+import { RadioButton, RadioGroup } from '../RadioGroup';
+import { Button } from '../Button';
 import { useForm } from 'react-hook-form';
 import styles from './form.module.scss';
-import { Checkbox } from '../Checkbox/Checkbox';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
@@ -16,7 +17,14 @@ const schema = z.object({
   inputLabel: z.string().optional(),
   remember: z.boolean(),
   switch: z.boolean(),
+  someChoice: z.union([z.literal('choice1'), z.literal('choice2'), z.literal('choice3')]),
 });
+
+const radioButtons = [
+  { id: 'choice1', value: 'choice1', name: 'someChoice', text: 'Radio selection 1' },
+  { id: 'choice2', value: 'choice2', name: 'someChoice', text: 'Radio selection 2' },
+  { id: 'choice3', value: 'choice3', name: 'someChoice', text: 'Radio selection 3' },
+];
 
 export const Form = (props: any) => {
   const {
@@ -56,6 +64,13 @@ export const Form = (props: any) => {
           errors={errors}></TextField>
         <Checkbox label='Remember me' name='remember' register={register} />
         <Toggle name='switch' register={register} />
+        <RadioGroup>
+          {radioButtons.map(({ text, ...rest }, idx) => (
+            <RadioButton {...rest} key={idx} register={register}>
+              {text}
+            </RadioButton>
+          ))}
+        </RadioGroup>
         <div className={styles.controls}>
           <Button styleType='bordered' onClick={() => reset()}>
             Cancel
