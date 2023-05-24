@@ -1,0 +1,1 @@
+Время вышло, но я все же очень хочу доделать задание. Чтобы по честному, последний коммит до истечения таймера - https://github.com/SteakOvercooked/junior_form_HB/commit/f4d992c1cfc656c3b26dfdad5aa4ceffa6901756
