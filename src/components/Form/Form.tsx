@@ -19,6 +19,11 @@ const schema = z.object({
   remember: z.boolean(),
   switch: z.boolean(),
   someChoice: z.union([z.literal('choice1'), z.literal('choice2'), z.literal('choice3')]),
+  dropdownTitle: z.union([
+    z.literal('Dropdown option'),
+    z.literal('Dropdown option1'),
+    z.literal('Dropdown option2'),
+  ]),
 });
 
 const radioButtons = [
@@ -28,9 +33,9 @@ const radioButtons = [
 ];
 
 const selectOptions = [
-  { id: 'selectOption1', value: 'selectOption1', text: 'Dropdown option' },
-  { id: 'selectOption2', value: 'selectOption2', text: 'Dropdown option1' },
-  { id: 'selectOption3', value: 'selectOption3', text: 'Dropdown option2' },
+  { id: 'dropOpt1', value: 'Dropdown option', text: 'Dropdown option' },
+  { id: 'dropOpt2', value: 'Dropdown option1', text: 'Dropdown option1' },
+  { id: 'dropOpt3', value: 'Dropdown option2', text: 'Dropdown option2' },
 ];
 
 export const Form = (props: any) => {
@@ -78,7 +83,12 @@ export const Form = (props: any) => {
             </RadioButton>
           ))}
         </RadioGroup>
-        <SelectBox name='selectSomething' register={register} options={selectOptions} />
+        <SelectBox
+          name='dropdownTitle'
+          title='Dropdown Title'
+          register={register}
+          options={selectOptions}
+        />
         <div className={styles.controls}>
           <Button styleType='bordered' onClick={() => reset()}>
             Cancel

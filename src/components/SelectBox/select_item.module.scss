@@ -1,30 +1,36 @@
-.item {
+.itemContent {
   cursor: pointer;
   padding: 16px;
   background-color: var(--main-bright);
   border: 1px solid var(--secondary-bright);
 }
 
-.native {
-  visibility: hidden;
-  pointer-events: none;
-}
-
 .label {
   font-size: 1.2em;
+  cursor: pointer;
   color: var(--main-dark)
 }
 
-.listItem {
+.item {
   &:last-child {
-    .item {
+    .itemContent {
       border-radius: 0 0 8px 8px;
     }
     margin-bottom: 30px;
   }
 }
 
-.item:focus {
+.item:hover {
+  .itemContent {
+    background-color: var(--main-violet);
+  }
+
+  .label {
+    color: var(--main-bright);
+  }
+}
+
+.itemContent:focus {
   background-color: var(--main-violet);
   .label {
     color: var(--main-bright);
