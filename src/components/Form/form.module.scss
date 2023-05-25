@@ -1,6 +1,8 @@
+@use '../../vars';
+
 .form {
-  width: clamp(300px, 70%, 900px);
-  margin: 96px auto;
+  width: clamp(600px, 70%, 900px);
+  margin: auto;
 }
 
 .fields {
@@ -13,7 +15,7 @@
 }
 
 .controls {
-  margin-top: 16px;
+  margin-top: vars.$gap-between;
   display: flex;
   justify-content: space-between;
   width: 100%;

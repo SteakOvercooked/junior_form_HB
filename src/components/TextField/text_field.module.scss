@@ -1,44 +1,46 @@
+@use '../../vars';
+
 .textfield {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  height: 56px;
+  background-color: var(--main-bright);
+  border: 1px solid var(--secondary-bright);
+  border-radius: vars.$radius;
+  height: vars.$height;
   outline: none;
-  padding: 1em;
+  padding: vars.$field-padding;
   width: 100%;
   font-size: 1.2em;
 }
 
 .textfield:focus {
-  box-shadow: 0 0 0 2px #7A5CFA;
+  box-shadow: 0 0 0 2px var(--main-violet);
 }
 
 .textfield:focus.invalid, .textfield.invalid {
-  box-shadow: 0 0 0 2px #EB5757;
+  box-shadow: 0 0 0 2px var(--main-red);
 }
 
 .textfield:focus.invalid ~.errorIcon, .textfield.invalid ~.errorIcon {
-  opacity: 1;
+  transform: translate(0, -50%) scale(1, 1);
 }
 
 .wrapper {
   width: 100%;
-  margin-top: 32px;
+  margin-top: vars.$gap-between;
 }
 
 .label {
   display: inline-block;
-  font-size: 0.8em;
+  font-size: vars.$helper-text;
   font-weight: 500;
-  margin-bottom: 8px;
+  margin-bottom: vars.$helper-gap;
   color: #666;
 }
 
 .error {
-  color: #EB5757;
-  margin-top: 8px;
-  font-size: 1em;
   display: inline-block;
+  color: var(--main-red);
+  margin-top: vars.$helper-gap;
+  font-size: vars.$helper-text;
 }
 
 .contentWrapper {
@@ -47,10 +49,11 @@
 
 .errorIcon {
   font-size: 1.3rem;
-  top: calc(23px - 0.5rem);
+  transition: transform .1s;
+  top: 50%;
+  transform: translate(0, -50%) scale(0, 0);
   right: 10px;
   position: absolute;
-  color: #EB5757;
+  color: var(--main-red);
   pointer-events: none;
-  opacity: 0;
 }

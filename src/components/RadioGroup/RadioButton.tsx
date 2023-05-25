@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import styles from './radio_button.module.scss';
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
-type RadioButtonProps = Omit<React.HTMLAttributes<HTMLInputElement>, 'type'> &
+type RadioButtonProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> &
   React.PropsWithChildren & {
     id: string;
     name: string;
@@ -9,17 +10,11 @@ type RadioButtonProps = Omit<React.HTMLAttributes<HTMLInputElement>, 'type'> &
     register: UseFormRegister<FieldValues>;
   };
 
-export const RadioButton = (props: RadioButtonProps) => {
+export const RadioButton = ({ name, register, children, ...rest }: RadioButtonProps) => {
   return (
     <label className={styles.label}>
-      <input
-        className={styles.radioButton}
-        type='radio'
-        id={props.id}
-        value={props.value}
-        {...props.register(props.name)}
-      />
-      {props.children}
+      <input className={styles.radioButton} type='radio' {...register(name)} {...rest} />
+      {children}
     </label>
   );
 };

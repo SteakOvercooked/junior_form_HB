@@ -12,10 +12,8 @@ type CheckboxProps = {
 export const Checkbox = (props: CheckboxProps) => {
   return (
     <label className={styles.label}>
-      <div className={styles.wrapper}>
-        <input className={styles.checkbox} type='checkbox' {...props.register(props.name)}></input>
-        <FontAwesomeIcon icon={faCheck} className={styles.icon}></FontAwesomeIcon>
-      </div>
+      <input className={styles.checkbox} type='checkbox' {...props.register(props.name)}></input>
+      <FontAwesomeIcon icon={faCheck} className={styles.icon}></FontAwesomeIcon>
       {props.label}
     </label>
   );

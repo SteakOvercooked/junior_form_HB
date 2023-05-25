@@ -1,6 +1,8 @@
+@use '../../vars';
+
 .itemContent {
   cursor: pointer;
-  padding: 16px;
+  padding: vars.$field-padding;
   background-color: var(--main-bright);
   border: 1px solid var(--secondary-bright);
 }
@@ -8,13 +10,13 @@
 .label {
   font-size: 1.2em;
   cursor: pointer;
-  color: var(--main-dark)
+  color: var(--main-dark);
 }
 
 .item {
   &:last-child {
     .itemContent {
-      border-radius: 0 0 8px 8px;
+      border-radius: 0 0 vars.$radius vars.$radius;
     }
     margin-bottom: 30px;
   }

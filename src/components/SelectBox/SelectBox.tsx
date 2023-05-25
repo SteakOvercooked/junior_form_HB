@@ -50,11 +50,12 @@ export const SelectBox = ({ options, name, title, register }: SelectBoxProps) =>
         <span className={styles.selectedText}>{selected.text}</span>
         <FontAwesomeIcon icon={faAngleDown} className={styles.arrowIcon} />
       </div>
-      {options.map(({ id, value }) => {
+      {options.map(({ id, value }, idx) => {
         return (
           <input
             className={styles.native}
             type='radio'
+            checked={idx === 0}
             key={id}
             value={value}
             {...register(name)}

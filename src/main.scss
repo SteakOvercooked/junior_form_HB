@@ -15,4 +15,11 @@
   --main-dark: #666;
   --selected: #333;
   --main-violet: #7A5CFA;
+  --main-red: #EB5757;
+}
+
+@media (max-width: 800px) {
+  :root {
+    font-size: 0.9rem;
+  }
 }

@@ -1,9 +1,11 @@
+@use '../../vars';
+
 .checkbox {
   appearance: none;
-  margin-right: 16px;
+  margin-right: 1rem;
   border: 1px solid var(--secondary-bright);
   background-color: var(--main-bright);
-  border-radius: 8px;
+  border-radius: vars.$radius;
   height: 1.5rem;
   width: 1.5rem;
   cursor: pointer;
@@ -13,25 +15,22 @@
   opacity: 0;
   pointer-events: none;
   color: var(--main-violet);
-  font-size: 1.2em;
+  font-size: 1.2rem;
   position: absolute;
   left: 4px;
-  top: 3px;
+  top: 2px;
 }
 
 .checkbox:checked ~.icon{
   opacity: 1;
 }
 
-.wrapper {
-  position: relative;
-}
-
 .label {
+  position: relative;
   display: flex;
   cursor: pointer;
   align-items: center;
   user-select: none;
-  margin-top: 32px;
+  margin-top: vars.$gap-between;
   color: var(--main-dark);
 }

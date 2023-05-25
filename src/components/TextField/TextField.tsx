@@ -6,6 +6,7 @@ import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> & {
   label: string;
+  type: 'text' | 'password';
   name: string;
   errors: FieldErrors<FieldValues>;
   register: UseFormRegister<FieldValues>;
@@ -21,7 +22,7 @@ export const TextField = (props: InputProps) => {
       <div className={styles.contentWrapper}>
         <input
           {...props.register(props.name)}
-          type='text'
+          type={props.type}
           className={styles.textfield + invalid}></input>
         <FontAwesomeIcon icon={faCircleExclamation} className={styles.errorIcon} />
       </div>

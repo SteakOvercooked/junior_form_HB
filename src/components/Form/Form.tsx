@@ -57,18 +57,21 @@ export const Form = (props: any) => {
     <form noValidate className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.fields}>
         <TextField
+          type='text'
           label='Username'
           placeholder='Enter username'
           name='username'
           register={register}
           errors={errors}></TextField>
         <TextField
+          type='password'
           label='Password'
           placeholder='Enter password'
           name='password'
           register={register}
           errors={errors}></TextField>
         <TextField
+          type='text'
           label='Input label'
           placeholder='Enter something'
           name='inputLabel'
@@ -78,7 +81,7 @@ export const Form = (props: any) => {
         <Toggle name='switch' register={register} />
         <RadioGroup>
           {radioButtons.map(({ text, ...rest }, idx) => (
-            <RadioButton {...rest} key={idx} register={register}>
+            <RadioButton {...rest} key={idx} defaultChecked={idx === 0} register={register}>
               {text}
             </RadioButton>
           ))}

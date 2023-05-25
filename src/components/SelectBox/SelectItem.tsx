@@ -1,4 +1,5 @@
 import styles from './select_item.module.scss';
+import { useRef } from 'react';
 
 type SelectItemProps = {
   id: string;
@@ -7,12 +8,16 @@ type SelectItemProps = {
 };
 
 export const SelectItem = (props: SelectItemProps) => {
-  const onClick = () => props.onSelected(props.id);
+  const labelRef = useRef<HTMLLabelElement>(null);
+  const onClick = () => {
+    labelRef.current?.click();
+    props.onSelected(props.id);
+  };
 
   return (
     <li className={styles.item}>
       <div className={styles.itemContent} onClick={onClick}>
-        <label htmlFor={props.id} className={styles.label}>
+        <label htmlFor={props.id} ref={labelRef} className={styles.label}>
           {props.text}
         </label>
       </div>
