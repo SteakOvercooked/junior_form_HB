@@ -1,9 +1,9 @@
 import styles from './text_field.module.scss';
-import type { ValidatedFieldProps } from '../../types';
+import type { ValidatedFieldProps, TypedInput } from '../../types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 
-type TextFieldProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> &
+type TextFieldProps = TypedInput &
   ValidatedFieldProps & {
     title: string;
     type: 'text' | 'password';
