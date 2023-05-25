@@ -1,24 +1,38 @@
-import type { FieldValues, UseFormRegister } from 'react-hook-form';
 import styles from './select_box.module.scss';
+import type { RegisteredFieldProps, SelectionFieldProps } from '../../types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useRef, useState } from 'react';
 import { SelectItem } from './SelectItem';
 
-type Option = {
-  id: string;
-  value: string;
-  text: string;
+type RadioNativeProps = RegisteredFieldProps & SelectionFieldProps;
+
+const RadioNative = ({ options, name, register }: RadioNativeProps) => {
+  return (
+    <>
+      {options.map(({ id, value }, idx) => {
+        return (
+          <input
+            className={styles.native}
+            type='radio'
+            defaultChecked={idx === 0}
+            key={id}
+            value={value}
+            {...register(name)}
+            id={id}></input>
+        );
+      })}
+    </>
+  );
 };
 
-type SelectBoxProps = {
-  name: string;
-  title: string;
-  options: Option[];
-  register: UseFormRegister<FieldValues>;
-};
+type SelectBoxProps = RegisteredFieldProps &
+  SelectionFieldProps & {
+    title: string;
+  };
 
-export const SelectBox = ({ options, name, title, register }: SelectBoxProps) => {
+export const SelectBox = ({ title, ...selectionProps }: SelectBoxProps) => {
+  const options = selectionProps.options;
   const [selected, setSelected] = useState(options[0]);
   const [open, setOpen] = useState(false);
   const divRef = useRef<HTMLDivElement>(null);
@@ -50,18 +64,7 @@ export const SelectBox = ({ options, name, title, register }: SelectBoxProps) =>
         <span className={styles.selectedText}>{selected.text}</span>
         <FontAwesomeIcon icon={faAngleDown} className={styles.arrowIcon} />
       </div>
-      {options.map(({ id, value }, idx) => {
-        return (
-          <input
-            className={styles.native}
-            type='radio'
-            checked={idx === 0}
-            key={id}
-            value={value}
-            {...register(name)}
-            id={id}></input>
-        );
-      })}
+      <RadioNative {...selectionProps} />
       <ul className={styles.list}>
         {options.map((option) => {
           return <SelectItem {...option} key={option.id} onSelected={onSelected}></SelectItem>;

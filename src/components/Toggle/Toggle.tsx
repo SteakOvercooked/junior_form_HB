@@ -1,19 +1,11 @@
-import type { FieldValues, UseFormRegister } from 'react-hook-form';
 import styles from './toggle.module.scss';
-import { ChangeEvent, useState } from 'react';
+import type { RegisteredFieldProps, TypedInput } from '../../types';
+import { useState } from 'react';
 
-type ToggleProps = React.HTMLProps<HTMLInputElement> & {
-  name: string;
-  register: UseFormRegister<FieldValues>;
-};
+type ToggleProps = TypedInput & RegisteredFieldProps;
 
-export const Toggle = (props: ToggleProps) => {
+export const Toggle = ({ name, register, ...rest }: ToggleProps) => {
   const [checked, setChecked] = useState(false);
-  const { onChange: externalOnChange, ...rest } = props.register(props.name);
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setChecked(e.target.checked);
-    externalOnChange(e);
-  };
   const text = checked ? 'On' : 'Off';
 
   return (
@@ -22,7 +14,9 @@ export const Toggle = (props: ToggleProps) => {
         checked={checked}
         className={styles.toggle}
         type='checkbox'
-        onChange={onChange}
+        {...register(name, {
+          onChange: (e) => setChecked(e.target.checked),
+        })}
         {...rest}></input>
       {text}
     </label>

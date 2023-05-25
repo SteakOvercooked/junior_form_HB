@@ -15,7 +15,7 @@ const schema = z.object({
     .string()
     .min(4, 'Password must be at least 4 charachers long!')
     .max(12, 'Password is too long!'),
-  inputLabel: z.string().optional(),
+  inputLabel: z.string().optional().default(''),
   remember: z.boolean(),
   switch: z.boolean(),
   someChoice: z.union([z.literal('choice1'), z.literal('choice2'), z.literal('choice3')]),
@@ -58,32 +58,30 @@ export const Form = (props: any) => {
       <div className={styles.fields}>
         <TextField
           type='text'
-          label='Username'
+          title='Username'
           placeholder='Enter username'
           name='username'
           register={register}
           errors={errors}></TextField>
         <TextField
           type='password'
-          label='Password'
+          title='Password'
           placeholder='Enter password'
           name='password'
           register={register}
           errors={errors}></TextField>
         <TextField
           type='text'
-          label='Input label'
+          title='Input label'
           placeholder='Enter something'
           name='inputLabel'
           register={register}
           errors={errors}></TextField>
-        <Checkbox label='Remember me' name='remember' register={register} />
+        <Checkbox title='Remember me' name='remember' register={register} />
         <Toggle name='switch' register={register} />
         <RadioGroup>
-          {radioButtons.map(({ text, ...rest }, idx) => (
-            <RadioButton {...rest} key={idx} defaultChecked={idx === 0} register={register}>
-              {text}
-            </RadioButton>
+          {radioButtons.map((button, idx) => (
+            <RadioButton {...button} key={idx} defaultChecked={idx === 0} register={register} />
           ))}
         </RadioGroup>
         <SelectBox
@@ -93,12 +91,8 @@ export const Form = (props: any) => {
           options={selectOptions}
         />
         <div className={styles.controls}>
-          <Button styleType='bordered' onClick={() => reset()}>
-            Cancel
-          </Button>
-          <Button styleType='filled' type='submit' disabled={!isValid}>
-            Next
-          </Button>
+          <Button styleType='bordered' text={'Cancel'} onClick={() => reset()} />
+          <Button styleType='filled' text={'Next'} type='submit' disabled={!isValid} />
         </div>
       </div>
     </form>
